@@ -14,9 +14,9 @@
     <h3>{{ approach }} {{ curse }}</h3>
     <form class="input" action="/check_curse" method="POST">
         <input type="hidden" name="approach" value="{{ approach }}"/>
-        <input type="hidden" name="curse" value="{{ curse }}"/>  
-        <p><input type="input" name="answer"></p>
-        <p><input type="submit" value="Bestätigen"></p>
+        <input type="hidden" name="curse" value="{{ curse }}"/>          
+        <p class="entry">D-EXYZ Steuerkurs <input type="input" name="answer"></p>
+        <p><input type="submit" value="Senden"></p>
     </form>
 
     <h5>{{ user_answer }}</h5>

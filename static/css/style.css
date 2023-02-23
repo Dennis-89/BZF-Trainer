@@ -41,19 +41,26 @@ h5 {
 
 .next_back {
     display: inline-block;
-    margin: 1em;
+    margin: 0 auto;
 }
 
 .answer {
     color: black;
     border: none;
     background-color: #fff;
+    padding: 1em;
 }
 
 .input {
     color: black;
     text-align: center;
-    margin: 0 auto;
+}
+
+.entry {
+    color: black;
+    text-align: center;
+    margin: 2em;
+    padding: 1em;
 }
 
 .next_curse {

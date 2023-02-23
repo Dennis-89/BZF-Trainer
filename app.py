@@ -126,11 +126,11 @@ def check_curse():
             "curses.html",
             approach=approach,
             curse=curse,
-            user_answer=f"Richtig! {user_answer}",
+            user_answer=f"D-EXYZ verstanden, Anflug fortsetzen!",
         )
     else:
         return render_template(
-            "curses.html", approach=approach, curse=curse, user_answer="Falsch!"
+            "curses.html", approach=approach, curse=curse, user_answer=f"D-EXYZ bestätigen Sie Steuerkurs {user_answer}!"
         )
 
 
