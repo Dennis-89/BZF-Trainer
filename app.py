@@ -4,8 +4,8 @@ from random import choice, sample
 
 from flask import Flask, render_template, request
 
-CURSES = list(range(10, 370, 10))
-APPROACH = ["Gegenanflug", "Queranflug"]
+FLIGHT_DIRECTION = list(range(10, 370, 10))
+FLIGHT_POSITION = ["Gegenanflug", "Queranflug"]
 STANDARD = [True, False]
 
 QUESTIONS_PATH = Path(Path(__file__).parent.absolute() / "questions.json")
@@ -13,17 +13,17 @@ QUESTIONS = loads(QUESTIONS_PATH.read_bytes())
 app = Flask(__name__)
 
 
-def calculate_current_curse(approach, curse):
-    if "Gegenanflug" in approach:
-        return curse + 180 if curse < 181 else curse - 180
-    elif "Rechter" in approach:
-        return curse - 90 if curse > 90 else curse + 270
+def calculate_current_heading(flight_position, heading):
+    if "Gegenanflug" in flight_position:
+        return heading + 180 if heading < 181 else heading - 180
+    elif "Rechter" in flight_position:
+        return heading - 90 if heading > 90 else heading + 270
     else:
-        return curse + 90 if curse < 271 else curse - 270
+        return heading + 90 if heading < 271 else heading - 270
 
 
-def check_for_three_values(current_curse):
-    return f"0{current_curse}" if current_curse < 100 else str(current_curse)
+def check_for_three_values(current_heading):
+    return f"0{current_heading}" if current_heading < 100 else str(current_heading)
 
 
 def number_of_questions():
@@ -107,33 +107,45 @@ def previous_question():
     )
 
 
-@app.route("/curses", methods=["GET", "POST"])
-def ask_for_curse():
-    curse, approach, standard = choice(CURSES), choice(APPROACH), choice(STANDARD)
+@app.route("/ask_for_heading", methods=["GET", "POST"])
+def ask_for_heading():
+    heading, flight_position, standard = (
+        choice(FLIGHT_DIRECTION),
+        choice(FLIGHT_POSITION),
+        choice(STANDARD),
+    )
     if not standard:
-        approach = f"Rechter {approach}"
-    return render_template("curses.html", approach=approach, curse=curse)
+        flight_position = f"Rechter {flight_position}"
+    return render_template(
+        "heading.html", flight_position=flight_position, heading=heading
+    )
 
 
-@app.route("/check_curse", methods=["GET", "POST"])
-def check_curse():
-    approach = request.form["approach"]
-    curse = int(request.form["curse"])
+@app.route("/check_heading", methods=["GET", "POST"])
+def check_heading():
+    flight_position = request.form["flight_position"]
+    heading = int(request.form["heading"])
     user_answer = request.form["answer"]
-    correct_answer = check_for_three_values(calculate_current_curse(approach, curse))
+    correct_answer = check_for_three_values(
+        calculate_current_heading(flight_position, heading)
+    )
     if user_answer == correct_answer:
         return render_template(
-            "curses.html",
-            approach=approach,
-            curse=curse,
+            "heading.html",
+            flight_position=flight_position,
+            heading=heading,
             user_answer=f"D-EXYZ verstanden, Anflug fortsetzen!",
         )
     else:
         return render_template(
-            "curses.html", approach=approach, curse=curse, user_answer=f"D-EXYZ bestätigen Sie Steuerkurs {user_answer}!"
+            "heading.html",
+            flight_position=flight_position,
+            heading=heading,
+            user_answer=f"D-EXYZ bestätigen Sie Steuerkurs {user_answer}!",
         )
 
 
 @app.route("/")
 def index():
     return render_template("index.html", questions=number_of_questions())
+
