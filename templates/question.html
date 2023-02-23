@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+    <title>Fragetrainer</title>
+</head>
+
+
+    <h2>{% block title %} Wähle weise! {% endblock %}</h2>
+    
+    <h3>{{ id + 1 }}. {{ question }}</h3>
+    <form  action="/answer" method="POST">    
+    <input type="hidden" name="id" value="{{ id }}">
+    {% for answer in answers %}
+    <p><input class="answer" type="submit" name="answer" value="{{ answer }}"></p>
+    {% endfor %}
+ <input type="hidden" name="answers_json" value="{{ answers_json }}">
+   
+ </form>
+
+<h4>{{ rating }}</h4>
+
+        <form class="next_back" action="/back" method="POST">  
+        <input type="hidden" name="id" value="{{ id - 1 }}">
+        <p><input type="submit" name="back" value="Zurück"></p>
+        </form>
+   
+        <form class="next_back" action="/next" method="POST">
+         <input type="hidden" name="id" value="{{ id + 1 }}">
+        <p><input type="submit" name="next" value="Weiter"></p>
+        </form>
+        
+
+{% endblock %}
+

@@ -1,0 +1,63 @@
+h1 {
+    color: green;
+    text-align: center;
+    padding: 10px;
+    font-family: Arial
+}
+
+
+h2 {
+    color: black;
+    text-align: center;    
+    font-family: Arial
+    font-size: 4em;
+}
+
+h3 {
+    color: black;
+    text-align: center;
+    padding: 1em;
+    font-family: Arial;
+    font-size: 1.2em;
+}
+
+h4 {
+    color: black;
+    text-align: left;
+    padding: 1em;
+    font-family: Arial;
+    font-size: 1.1em;
+    font-weight: 700;
+}
+
+h5 {
+    color: black;
+    text-align: center;
+    padding: 1em;
+    font-family: Arial;
+    font-size: 1.1em;
+    font-weight: 700;
+}
+
+.next_back {
+    display: inline-block;
+    margin: 1em;
+}
+
+.answer {
+    color: black;
+    border: none;
+    background-color: #fff;
+}
+
+.input {
+    color: black;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.next_curse {
+    text-align: center;
+    margin: 0 auto;
+    padding: 2em;
+}

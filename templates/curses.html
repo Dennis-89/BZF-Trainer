@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+    <title>Fragetrainer</title>
+</head>
+
+
+    <h2>{% block title %} Naa, verflogen?! {% endblock %}</h2>
+
+    <h3>{{ approach }} {{ curse }}</h3>
+    <form class="input" action="/check_curse" method="POST">
+        <input type="hidden" name="approach" value="{{ approach }}"/>
+        <input type="hidden" name="curse" value="{{ curse }}"/>  
+        <p><input type="input" name="answer"></p>
+        <p><input type="submit" value="Bestätigen"></p>
+    </form>
+
+    <h5>{{ user_answer }}</h5>
+
+    <form class="next_curse" action="/curses" method="POST">
+        <p><input type="submit" value="Nächste Meldung..."></p>
+    </form>
+
+{% endblock %}
