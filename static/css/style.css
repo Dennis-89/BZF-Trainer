@@ -21,27 +21,35 @@ h3 {
     font-size: 1.2em;
 }
 
-h4 {
+.rating {
     color: black;
     text-align: left;
-    padding: 1em;
+    padding: 2em;
     font-family: Arial;
     font-size: 1.1em;
     font-weight: 700;
 }
 
-h5 {
+.rating::after {
+    content: '\A';
+    white-space: pre;
+}
+
+.user_answer{
     color: black;
-    text-align: center;
-    padding: 1em;
+    display: table;
+    margin: 0 auto;
     font-family: Arial;
     font-size: 1.1em;
     font-weight: 700;
 }
+
 
 .next_back {
     display: inline-block;
     margin: 0 auto;
+    padding: 1em;
+    text-align: center;
 }
 
 .answer {

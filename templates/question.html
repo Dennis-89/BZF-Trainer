@@ -11,7 +11,7 @@
 
     <h2>{% block title %} Wähle weise! {% endblock %}</h2>
     
-    <h3>{{ id + 1 }}. {{ question }}</h3>
+    <h3>{{ id }}. {{ question }}</h3>
     <form  action="/answer" method="POST">    
     <input type="hidden" name="id" value="{{ id }}">
     {% for answer in answers %}
@@ -21,15 +21,17 @@
    
  </form>
 
-<h4>{{ rating }}</h4>
+{%  if rating != None %}
+    <span class="rating">{{ rating }}</span>
+{% endif %}
 
         <form class="next_back" action="/back" method="POST">  
-        <input type="hidden" name="id" value="{{ id - 1 }}">
+        <input type="hidden" name="id" value="{{ id }}">
         <p><input type="submit" name="back" value="Zurück"></p>
         </form>
    
         <form class="next_back" action="/next" method="POST">
-         <input type="hidden" name="id" value="{{ id + 1 }}">
+         <input type="hidden" name="id" value="{{ id }}">
         <p><input type="submit" name="next" value="Weiter"></p>
         </form>
         

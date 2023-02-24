@@ -12,7 +12,7 @@
     Wähle die Frage, mit der du beginnen willst:
     <form action="/question" method="POST">    
     {% for question in questions %}
-    <p><input type="submit" name="answer" value={{ question + 1 }}></p>
+    <p><input type="submit" name="id" value={{ question }}></p>
     {% endfor %}
     </form>
 
