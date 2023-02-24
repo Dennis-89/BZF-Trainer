@@ -26,13 +26,13 @@ https://docs.gunicorn.org/en/stable/install.html
 Start "gunicorn" like this:
 
 ```
-gunicorn --bind <SERVER-IP> <path>.<to>.Question_Trainer.app:app
+gunicorn --bind <SERVER-IP> <path>.<to>.BZF-Trainer.app:app
 ```
 
 For example:
 
 ```
-gunicorn --bind 198.160.0.35:5000 home.user.Question_Trainer.app:app
+gunicorn --bind 198.160.0.35:5000 home.user.BZF-Trainer.app:app
 ```
 
 You can visit the BZF-Trainer in the browser by entering this URL:
