@@ -8,13 +8,13 @@
 
 {% block content %}
     <h1>{% block title %} Willkommen zum BZF Prüfungstrainer {% endblock %}</h1>
-    
-    Wähle die Frage, mit der du beginnen willst:
-    <form action="/question" method="POST">    
-    {% for question in questions %}
-    <p><input type="submit" name="id" value={{ question }}></p>
-    {% endfor %}
-    </form>
+
+    <p>Dieser Trainer basiert auf dem <a href="https://www.bundesnetzagentur.de/SharedDocs/Downloads/DE/Sachgebiete/Telekommunikation/Unternehmen_Institutionen/Frequenzen/Funkzeugnisse/Flugfunkzeugnisse/2023Pruefungsfragen_BZFII_BZFI_pdf.pdf?__blob=publicationFile&v=1">offiziellen Fragekatalog der Bundesnetzagentur</a></p>
+    <p>Die Antworten erscheinen in zufälliger Reihenfolge, so damit nicht immer die erste Antwort die Richtige ist.
+    Unter "Fragenübersicht" geht es zu den Fragen. Wer Probleme mit der Berechnung des Steuerkurses hat, findet Übungen unter "Navigator".</p>
+    <p>Es wird ausdrücklich darauf hingewiesen, dass diese Webanwendung eine Lernhilfe sein soll. Es wird nicht garantiert, dass sie frei von Fehler ist. Im Zweifel bitte das originale PDF-Dokument zu Rate ziehen. Unter "Kontakt" darf man mir gerne Fehler melden oder Verbesserungen vorschlagen.</p>
+
+    <h3> Viel Erfolg und guten Flug!</h3>
+
 
 {% endblock %}
-

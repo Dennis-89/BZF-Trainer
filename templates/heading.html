@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+    <title>Fragetrainer</title>
+</head>
+
+
+    <h2>{% block title %} Naa, verflogen?! {% endblock %}</h2>
+
+    <h3>{{ flight_position }} {{ heading }}</h3>
+    <form class="input" action="/check_heading" method="POST">
+        <input type="hidden" name="flight_position" value="{{ flight_position }}"/>
+        <input type="hidden" name="heading" value="{{ heading }}"/>
+        <p class="entry">D-EXYZ Steuerkurs <input type="input" name="answer"></p>
+        <p><input type="submit" value="Senden"></p>
+    </form>
+
+    <span class="user_answer">{{ user_answer }}</span>
+
+    <form class="next_curse" action="/ask_for_heading" method="POST">
+        <p><input type="submit" value="Nächste Meldung..."></p>
+    </form>
+
+{% endblock %}

@@ -1,0 +1,19 @@
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+    <title>Fragetrainer</title>
+</head>
+
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} BZF-Prüfungsfragen {% endblock %}</h1>
+
+    <p>Wähle die Frage, mit der du beginnen willst:</p>
+    <form action="/question" method="POST">
+    {% for question in questions %}
+    <p><input type="submit" name="id" value={{ question }}></p>
+    {% endfor %}
+    </form>
+
+{% endblock %}

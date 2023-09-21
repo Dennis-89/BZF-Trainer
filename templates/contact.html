@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+    <title>Fragetrainer</title>
+</head>
+
+
+    <h2>{% block title %} Gibt's Probleme? {% endblock %}</h2>
+
+    <h3>Einfach eine Mail schreiben oder ein Issues eröffnen:</h3>
+
+    <p><a href="https://github.com/Dennis-89/BZF-Trainer">GitHub</a></p>
+    <p><a href="mailto:straub.dennis1@web.de?subject=BZF-Trainer">Eine Mail senden</a></p>
+
+{% endblock %}

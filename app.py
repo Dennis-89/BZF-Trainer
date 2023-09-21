@@ -86,9 +86,7 @@ def next_question():
 @app.route("/back", methods=["GET", "POST"])
 def previous_question():
     question_id = int(request.form["id"]) - 1
-    if question_id < 1:
-        return index()
-    return render_question(question_id)
+    return index() if question_id < 1 else render_question(question_id)
 
 
 @app.route("/ask_for_heading", methods=["GET", "POST"])
@@ -121,8 +119,15 @@ def check_heading():
             user_answer=f"D-EXYZ bestätigen Sie Steuerkurs {user_answer}!",
         )
 
+@app.route("/contact", methods=["GET", "POST"])
+def contact():
+    return render_template("contact.html")
+
+@app.route("/question_content")
+def question_content():
+    return render_template("question_content.html", questions=question_ids())
 
 @app.route("/")
 def index():
-    return render_template("index.html", questions=question_ids())
+    return render_template("index.html")
 
